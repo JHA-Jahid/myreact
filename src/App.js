@@ -1,10 +1,9 @@
-import Clock from './components/Clock';
+import Form from './components/Form';
 
 function App() {
-    console.log('App Component Rendered');
     return (
         <div className="App">
-            <Clock />
+            <Form />
         </div>
     );
 }
