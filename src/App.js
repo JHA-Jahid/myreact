@@ -1,9 +1,11 @@
-import Calculator from './components/BoilingWater/Calculator';
+import ClickCounter from './components/ClickCounter';
+import HoverCounter from './components/HoverCounter';
 
 function App() {
     return (
         <div className="App">
-            <Calculator />
+            <HoverCounter />
+            <ClickCounter />
         </div>
     );
 }
