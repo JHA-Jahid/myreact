@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HoverCounter({ count, incrementCount, theme }) {
+function HoverCounter({ count, incrementCount, theme, switchTheme }) {
     const style =
         theme === 'dark'
             ? {
@@ -9,12 +9,16 @@ function HoverCounter({ count, incrementCount, theme }) {
                   fontSize: '40px',
                   fontFamily: 'tahoma',
               }
-            : { color: '#800080' };
+            : { color: '#800080', fontSize: '40px' };
+    console.log('Hover Counter Rendered');
     return (
         <div>
             <h1 onMouseOver={incrementCount} style={style}>
                 Hovered {count} Times
             </h1>
+            <button type="button" onClick={switchTheme}>
+                Change Theme
+            </button>
         </div>
     );
 }
