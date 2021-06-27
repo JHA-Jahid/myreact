@@ -1,5 +1,7 @@
 import { useReducer } from 'react';
 
+const initialState = 0;
+
 const reducer = (state, action) => {
     switch (action) {
         case 'increment':
@@ -10,8 +12,6 @@ const reducer = (state, action) => {
             return state;
     }
 };
-
-const initialState = 0;
 
 function Counter() {
     const [count, despatch] = useReducer(reducer, initialState);
