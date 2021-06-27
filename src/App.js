@@ -1,42 +1,30 @@
-import React from 'react';
-import ClickCounter from './components/ClickCounter';
-import Counter from './components/Counter';
-import Section from './components/Section';
-import ThemeContext from './contexts/themeContext';
+import { useCallback, useState } from 'react';
+import Button1 from './components/Button1';
+import ShowCount from './components/ShowCount';
+import Title from './components/Title';
 
-class App extends React.Component {
-    state = {
-        theme: 'dark',
-    };
+function App() {
+    const [count1, setCount1] = useState(0);
+    const [count2, setCount2] = useState(0);
 
-    switchTheme = () => {
-        this.setState(({ theme }) => {
-            if (theme === 'dark') {
-                return {
-                    theme: 'light',
-                };
-            }
-            return {
-                theme: 'dark',
-            };
-        });
-    };
+    const incrementByOne = useCallback(() => {
+        setCount1((prevCount) => prevCount + 1);
+    }, []);
 
-    render() {
-        const { theme } = this.state;
-        return (
-            <div className="App">
-                <Counter>
-                    {(count, incrementCount) => (
-                        <ClickCounter count={count} incrementCount={incrementCount} />
-                    )}
-                </Counter>
-                <ThemeContext.Provider value={{ theme, switchTheme: this.switchTheme }}>
-                    <Section />
-                </ThemeContext.Provider>
-            </div>
-        );
-    }
+    const incrementByFive = useCallback(() => {
+        setCount2((prevCount) => prevCount + 5);
+    }, []);
+
+    return (
+        <div className="app">
+            <Title />
+            <ShowCount count={count1} title="Count 1" />
+            <Button1 handleClick={incrementByOne}>Increment by One</Button1>
+            <hr />
+            <ShowCount count={count2} title="Count 2" />
+            <Button1 handleClick={incrementByFive}>Increment by Five</Button1>
+        </div>
+    );
 }
 
 export default App;
